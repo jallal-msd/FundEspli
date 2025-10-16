@@ -14,8 +14,6 @@ console.log(res)
 console.log("-----------------------------------")
 
 
-
-
 function memoriz(fn){
   
   cache = []
