@@ -1,10 +1,14 @@
 import {useState } from 'react'
+import {Routes, Route} from "react-router-dom"
+
 // import './App.css'
 import Reloj from "./components/reloj"
 import Timer from "./components/timer"
 import Salud from "./components/Saludo"
 import Room from "./components/RoomStatus"
 import User from "./components/UserList"
+import Focus from "./components/AutoFocus"
+import Login from "./components/loginPanel"
 function App() {
   const [roomId, setId] = useState(0)
   const [ep,setEp] = useState("https://jsonplaceholder.typicode.com/users")
@@ -19,24 +23,25 @@ function App() {
     }
   }
   return (
-    <>
-
-{/*     <Reloj/>  */}
-{/*     <Timer/> */}
-{/*     <Salud/> */}
-{/* <select name="rooms" id="roomId" onChange={handleChange}> */}
-{/*   <option value="1">1</option> */}
-{/*   <option value="2">2</option> */}
-{/*   <option value="3">3</option> */}
-{/*   <option value="4">4</option> */}
-{/* </select> */}
-    <form>
-    <label>Endpoint : </label>
-    <input type="text" id="ep" onKeyDown={handleChangeKey}/>
-    </form>
-    <Room roomId={roomId}/>
-    <User endpoint={ep}/>
-    </>
+<Routes>
+    <Route path="/reloj" element={<Reloj/>} /> 
+    <Route path="/auto" element={<Focus/>} /> 
+    <Route path="/login" element={<Login/>} /> 
+</Routes>
+//     <Timer/>
+//     <Salud/>
+// <select name="rooms" id="roomId" onChange={handleChange}>
+//   <option value="1">1</option>
+//   <option value="2">2</option>
+//   <option value="3">3</option>
+//   <option value="4">4</option>
+// </select>
+//     <form>
+//     <label>Endpoint : </label>
+//     <input type="text" id="ep" onKeyDown={handleChangeKey}/>
+//     </form>
+//     <Room roomId={roomId}/>
+//     <User endpoint={ep}/>
   )
 }
 

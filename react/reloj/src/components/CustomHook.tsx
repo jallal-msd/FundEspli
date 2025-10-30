@@ -2,9 +2,11 @@ import {useState, useEffect} from 'react'
 function CustomHook(endpoint){
 const [data, setData]:[] = useState([])
 const [carga, setCarga]:[] = useState(false)
+const controller = new AbortController()
+const signal = controller.signal
 
   const fetching =  async ()=>{ 
-    const ftch =  await fetch(endpoint)
+    const ftch =  await fetch(endpoint, {signal})
     if(!ftch.ok){
       throw new Error("Http error")
     }
@@ -23,7 +25,7 @@ const [carga, setCarga]:[] = useState(false)
         }
         return ()=>{
           // setData([])
-          // controller.abort()
+          controller.abort()
         }
   },[endpoint])
 
